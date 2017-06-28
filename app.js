@@ -30,26 +30,25 @@ var bot = new builder.UniversalBot(connector, function (session) {
 	var url  =  'http://api.icndb.com/jokes/random';
           request(url,function(error,response,body){
                        // console.log('Err -> '+error + body +response);
-						try{
-						var temp = JSON.parse(body);
-					       // console.log('joke : - '+temp.value.joke);
-						session.send(temp.value.joke);
-						   }
-						 catch(ex){
-						   console.log('Error');
-						   session.send('Error aa gaya');
-						          }
-                                                     
-                                }
+		try{
+		var temp = JSON.parse(body);
+		// console.log('joke : - '+temp.value.joke);
+		session.send(temp.value.joke);
+		   }
+		catch(ex){
+		 console.log('Error');
+		 }
+          });
+        }
 	else if(command == 'datesheet'){
 		session.send('http://www.ipu.ac.in/exam_datesheet.php');
 		}
-				       }
-		else if(command == 'quotes'){
+			      
+		else if(command == 'quotes')
+			{
 			console.log('nothing');
 			session.send('nothing');
-
-				            }
+			 }
 		else if(command == 'weather')
 		{
 						console.log('weather is working');
@@ -59,17 +58,17 @@ var bot = new builder.UniversalBot(connector, function (session) {
 						var weather = JSON.parse(body);
 						var temp = weather.main.temp;
 						var pressure = weather.main.pressure;
-						session.send('Temperature in New Delhi is'+'temp' + 'degree');
-						session.send('Pressure in New Delhi is'+'pressure' + 'Pascal');
+						session.send('===============================================' );
+						session.send('Temperature in New Delhi is : '+temp + ' degree'  );
+						session.send('Pressure in New Delhi is : '+pressure + ' Pascal');
+						session.send('===============================================' );
 						});
 			 
 		}
-    			else{
+    			
+		else{
     			session.send("Don't know the command");
 			session.send("Example Commands: weather,jokes,quotes,score,datesheet,news");
-    			    }
-
-    
-
+ 		}
     
 });
