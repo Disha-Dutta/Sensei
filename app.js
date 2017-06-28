@@ -23,32 +23,51 @@ var bot = new builder.UniversalBot(connector, function (session) {
     var command = session.message.text;
     if(command == 'hello'){
        session.send("Command Found");
-    }
+     }
+                          
     else if(command == 'jokes'){
        // Logic to get the joke from api
 	var url  =  'http://api.icndb.com/jokes/random';
           request(url,function(error,response,body){
                        // console.log('Err -> '+error + body +response);
-                        try{
-			var temp = JSON.parse(body);
-                       // console.log('joke : - '+temp.value.joke);
-                        session.send(temp.value.joke);
-                         }
-		         catch(ex){
-                           console.log('Error');
-			   session.send('Error aa gaya');
-                         }
-                        
-                          
-			
-	 });
-		
-    }
+						try{
+						var temp = JSON.parse(body);
+					       // console.log('joke : - '+temp.value.joke);
+						session.send(temp.value.joke);
+						   }
+						 catch(ex){
+						   console.log('Error');
+						   session.send('Error aa gaya');
+						          }
+                                                     
+                                }
+	else if(command == 'datesheet'){
+		session.send('http://www.ipu.ac.in/exam_datesheet.php');
+		}
+				       }
+		else if(command == 'quotes'){
+			console.log('nothing');
+			session.send('nothing');
 
-    else{
-    	session.send("Don't know the command");
-	session.send("Example Commands, quotes,score,datesheet,news");
-    }
+				            }
+		else if(command == 'weather')
+		{
+						console.log('weather is working');
+						var urlw = 'http://api.openweathermap.org/data/2.5/weather?q=New+Delhi,IN&appid=d572465715035d423880c2c70de3b469&units=metric';
+						request(urlw,function(error,response,body)
+						{
+						var weather = JSON.parse(body);
+						var temp = weather.main.temp;
+						var pressure = weather.main.pressure;
+						session.send('Temperature in New Delhi is'+'temp' + 'degree');
+						session.send('Pressure in New Delhi is'+'pressure' + 'Pascal');
+						});
+			 
+		}
+    			else{
+    			session.send("Don't know the command");
+			session.send("Example Commands: weather,jokes,quotes,score,datesheet,news");
+    			    }
 
     
 
