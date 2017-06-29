@@ -23,7 +23,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
     var command = session.message.text;
     if(command == 'hello'){
        session.send("Hi, I am Sensei your personal bot ");
-	session.send("Give me command like: weather,datesheet,jokes,news");
+	session.send("Give me command like: weather,datesheet,jokes,news,sleep,");
      }
                           
     else if(command == 'jokes'){
@@ -60,15 +60,15 @@ var bot = new builder.UniversalBot(connector, function (session) {
 						var temp = weather.main.temp;
 						var pressure = weather.main.pressure;
 						var humidity = weather.main.humidity;
-						var min_temp = weather.main.temp_min;
-						var max_temp = weather.main.temp_max;
+						var temp_min = weather.main.temp_min;
+						var temp_max = weather.main.temp_max;
 						console.log('temperature is '+ temp);
 						session.send('===============================================');
 						session.send('Temperature in New Delhi is : '+temp + ' degree');
 						session.send('Pressure in New Delhi is : '+pressure + ' Pascal');
 						session.send('Humidity in New Delhi is : '+ humidity );
-						session.send('Minimum temperature in New Delhi is : '+ min_temp +' Degree');
-						session.send('Maximum temperature in New Delhi is : '+ max_temp + ' Degree');
+						session.send('Minimum temperature in New Delhi is : '+ temp_min +' Degree');
+						session.send('Maximum temperature in New Delhi is : '+ temp_max + ' Degree');
 						session.send('===============================================');
 						});
 			 
@@ -88,11 +88,14 @@ var bot = new builder.UniversalBot(connector, function (session) {
 				session.send("Here it is what i found :"+ urlm);
 						});}
 			else if(command=='sleep'){
-					session.send('Early to bed early to rise');				}
+					session.send('Early to bed early to rise makes you healthy ;)');
+	}
 
 		else{
-    			session.send("Don't know the command");
+    			session.send("sorry ,Don't know the command");
 			session.send("I can tell you about: weather,jokes,quotes,score,datesheet,news");
+			session.send ("please teach me");
+
  		}
     
 });
