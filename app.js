@@ -22,7 +22,8 @@ var bot = new builder.UniversalBot(connector, function (session) {
     console.log('Commnad from skype : - '+session.message.text);
     var command = session.message.text;
     if(command == 'hello'){
-       session.send("Command Found");
+       session.send("Hi, I am Sensei your personal bot ");
+	session.send("Give me command like: weather,datesheet,jokes,news");
      }
                           
     else if(command == 'jokes'){
@@ -58,17 +59,40 @@ var bot = new builder.UniversalBot(connector, function (session) {
 						var weather = JSON.parse(body);
 						var temp = weather.main.temp;
 						var pressure = weather.main.pressure;
-						session.send('===============================================' );
-						session.send('Temperature in New Delhi is : '+temp + ' degree'  );
+						var humidity = weather.main.humidity;
+						var min_temp = weather.main.temp_min;
+						var max_temp = weather.main.temp_max;
+						console.log('temperature is '+ temp);
+						session.send('===============================================');
+						session.send('Temperature in New Delhi is : '+temp + ' degree');
 						session.send('Pressure in New Delhi is : '+pressure + ' Pascal');
-						session.send('===============================================' );
+						session.send('Humidity in New Delhi is : '+ humidity );
+						session.send('Minimum temperature in New Delhi is : '+ min_temp +' Degree');
+						session.send('Maximum temperature in New Delhi is : '+ max_temp + ' Degree');
+						session.send('===============================================');
 						});
 			 
 		}
-    			
+			else if(command=='news'){
+				console.log('news is working');
+				session.send('Here is your link for tech-news:'+'http://money.cnn.com/technology/');
+				
+				}
+    			else if(command=='How are you'){
+				session.send("Great,What about you?");
+						}
+			else if(command=="Random Facts"){
+				var urlm = "https://en.wikipedia.org/wiki/Special.random";
+				request(urlm,function(error,response,body){
+				
+				session.send("Here it is what i found :"+ urlm);
+						});}
+			else if(){
+				}
+
 		else{
     			session.send("Don't know the command");
-			session.send("Example Commands: weather,jokes,quotes,score,datesheet,news");
+			session.send("I can tell you about: weather,jokes,quotes,score,datesheet,news");
  		}
     
 });
