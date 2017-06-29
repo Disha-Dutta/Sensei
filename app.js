@@ -22,7 +22,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
     console.log('Commnad from skype : - '+session.message.text);
     var command = session.message.text;
     if(command == 'hello'){
-       session.send("Hi, I am Sensei your personal bot ");
+       session.send("Hi, I am Jasceline, your personal bot ");
 	session.send("Give me command like: weather,datesheet,jokes,news,sleep,");
      }
                           
