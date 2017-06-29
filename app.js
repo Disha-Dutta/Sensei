@@ -87,8 +87,8 @@ var bot = new builder.UniversalBot(connector, function (session) {
 				
 				session.send("Here it is what i found :"+ urlm);
 						});}
-			else if(){
-				}
+			else if(command=='sleep'){
+					session.send('Early to bed early to rise');				}
 
 		else{
     			session.send("Don't know the command");
